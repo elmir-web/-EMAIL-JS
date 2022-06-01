@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    abcdef1375@liaphoto.com
+    <script>
+      console.log(testEmail(prompt()));
+
+      function testEmail(prevText) {
+        const prevTextArray = prevText.split("@");
+        const tempArrayDomen = prevTextArray[1].split(".");
+        prevTextArray.pop();
+
+        for (let index = 0; index < tempArrayDomen.length; index++) {
+          prevTextArray.push(tempArrayDomen[index]);
+        }
+
+        let loginEmailPart1 = prevTextArray[0].slice(0, 3);
+
+        for (let index = 0; index < prevTextArray[0].slice(3).length; index++) {
+          loginEmailPart1 += "*";
+        }
+
+        prevTextArray[0] = loginEmailPart1;
+
+        let domenEmailPart1 = prevTextArray[1].slice(0, 2);
+
+        for (let index = 0; index < prevTextArray[1].slice(2).length; index++) {
+          domenEmailPart1 += "*";
+        }
+
+        prevTextArray[1] = domenEmailPart1;
+
+        const newEmail = `${prevTextArray[0]}@${prevTextArray[1]}.${prevTextArray[2]}`;
+
+        return newEmail;
+      }
+    </script>
+  </body>
+</html>
